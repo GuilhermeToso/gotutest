@@ -2,8 +2,6 @@
 import MyButton from "../../components/my-button/my-button";
 import MyMessage from "../../components/my-message/my-message";
 
-export interface LandingProps {}
-
 export function Landing() {
   return (
     <div>
