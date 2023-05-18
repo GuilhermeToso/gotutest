@@ -9,7 +9,7 @@ export function MyMessage() {
           color: pink;
         }
       `}</style>
-      <h1>Welcome to hi!</h1>
+      <h1>Welcome to Teste!</h1>
     </div>
   );
 }
