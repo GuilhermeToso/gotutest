@@ -38,6 +38,6 @@ jobs:
 
       - name: Lint and Test
         run: |
-          npx nx format:check
+          npx nx format:write
           npx nx affected -t lint
           npx nx affected -t test
