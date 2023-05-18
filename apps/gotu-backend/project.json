@@ -1,0 +1,64 @@
+{
+  "name": "gotu-backend",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/gotu-backend/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/gotu-backend",
+        "main": "apps/gotu-backend/src/main.ts",
+        "tsConfig": "apps/gotu-backend/tsconfig.app.json",
+        "assets": ["apps/gotu-backend/src/assets"],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/gotu-backend/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "gotu-backend:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "gotu-backend:build:development"
+        },
+        "production": {
+          "buildTarget": "gotu-backend:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/gotu-backend/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/gotu-backend/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}
