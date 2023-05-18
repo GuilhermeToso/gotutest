@@ -1,5 +1,6 @@
 /* eslint-disable-next-line */
 import MyButton from "../../components/my-button/my-button";
+import MyMessage from "../../components/my-message/my-message";
 
 export interface LandingProps {}
 
@@ -14,6 +15,7 @@ export function Landing() {
       `}</style>
       <h1>Welcome to Landing!</h1>
       <MyButton></MyButton>
+      <MyMessage></MyMessage>
     </div>
   );
 }
