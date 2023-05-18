@@ -1,8 +1,6 @@
 /* eslint-disable-next-line */
 import {useState} from "react";
 
-export interface MyButtonProps {}
-
 export function MyButton() {
 
   const [state, setState] = useState<string>('')

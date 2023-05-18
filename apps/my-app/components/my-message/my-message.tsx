@@ -1,6 +1,3 @@
-/* eslint-disable-next-line */
-export interface MyMessageProps {}
-
 export function MyMessage() {
   return (
     <div>
