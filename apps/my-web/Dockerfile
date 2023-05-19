@@ -5,7 +5,7 @@ FROM node:14-alpine AS base
 WORKDIR /app
 
 # Copy the built Next.js application from the local machine to the container
-COPY dist ./
+COPY ./apps/my-web/dist ./
 
 # Stage 2: Serve Stage
 FROM node:14-alpine AS serve
