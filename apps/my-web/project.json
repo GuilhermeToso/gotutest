@@ -10,7 +10,7 @@
       "defaultConfiguration": "production",
       "options": {
         "root": "apps/my-web",
-        "outputPath": "dist/apps/my-web"
+        "outputPath": "apps/my-web/dist"
       },
       "configurations": {
         "development": {
