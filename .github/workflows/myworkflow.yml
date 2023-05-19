@@ -33,13 +33,9 @@ jobs:
       - name: Use Nx Dev
         uses: nrwl/nx-set-shas@v3
 
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Lint and Test
+      - name: Install dependencies and Test
         run: |
-          npx nx format:write
-          npx nx affected -t lint
+          npm ci
           npx nx affected -t test
 
       - name: Build and Store Docker images

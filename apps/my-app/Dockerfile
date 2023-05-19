@@ -1,41 +1,40 @@
-# Build stage
-FROM node:alpine AS build
+# Stage 1: Environment Setup
+FROM node:14-alpine AS env-setup
 
-# Set the working directory
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copy package.json and package-lock.json files
+# Copy package.json and package-lock.json to the working directory
 COPY package.json .
 COPY package-lock.json .
 
 # Install dependencies
-RUN npm ci
+RUN npm ci --only=production
 
-# Copy the entire application code
+# Stage 2: Build the Next.js Application
+FROM env-setup AS build
+
+# Copy the entire application to the working directory
 COPY . .
 
 # Build the Next.js application
 RUN npm run build
 
-# Runtime stage
-FROM node:alpine
+# Stage 3: Serve Artifacts
+FROM node:14-alpine AS serve
 
-# Set the working directory
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copy only the necessary build artifacts from the build stage
-COPY --from=build /app/.next ./.next
-COPY --from=build /app/public ./public
-COPY --from=build /app/package.json .
+# Copy necessary artifacts from the build stage
+COPY --from=build /app/.next .next
+COPY --from=build /app/public public
 
-# Install production dependencies only
-RUN npm ci --production
-
-# Set the appropriate environment variables (if needed)
-# ENV NODE_ENV production
-
-# Expose the port on which the Next.js application listens
+# Expose the desired port (change it to match your Next.js app's port)
 EXPOSE 3000
 
-# Define the command to start the Next.js application
+# Set the environment variable
+ENV NODE_ENV production
+
+# Start the Next.js application
 CMD ["npm", "start"]
