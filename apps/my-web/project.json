@@ -1,7 +1,7 @@
 {
-  "name": "my-app",
+  "name": "my-web",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/my-app",
+  "sourceRoot": "apps/my-web",
   "projectType": "application",
   "targets": {
     "build": {
@@ -9,12 +9,12 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "root": "apps/my-app",
-        "outputPath": "dist/apps/my-app"
+        "root": "apps/my-web",
+        "outputPath": "dist/apps/my-web"
       },
       "configurations": {
         "development": {
-          "outputPath": "apps/my-app"
+          "outputPath": "apps/my-web"
         },
         "production": {}
       }
@@ -23,16 +23,16 @@
       "executor": "@nx/next:server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "my-app:build",
+        "buildTarget": "my-web:build",
         "dev": true
       },
       "configurations": {
         "development": {
-          "buildTarget": "my-app:build:development",
+          "buildTarget": "my-web:build:development",
           "dev": true
         },
         "production": {
-          "buildTarget": "my-app:build:production",
+          "buildTarget": "my-web:build:production",
           "dev": false
         }
       }
@@ -40,14 +40,14 @@
     "export": {
       "executor": "@nx/next:export",
       "options": {
-        "buildTarget": "my-app:build:production"
+        "buildTarget": "my-web:build:production"
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/my-app/jest.config.ts",
+        "jestConfig": "apps/my-web/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {
@@ -61,7 +61,7 @@
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/my-app/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["apps/my-web/**/*.{ts,tsx,js,jsx}"]
       }
     }
   },
