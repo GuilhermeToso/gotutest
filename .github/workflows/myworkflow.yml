@@ -47,7 +47,10 @@ jobs:
           for APP_DIR in $APP_DIRS; do
             IMAGE_NAME=$(basename "$APP_DIR")
             DOCKER_FILE=$APP_DIR/Dockerfile
-            DOCKER_IMAGE=docker/$IMAGE_NAME
+            DOCKER_IMAGE=$IMAGE_NAME
+
+            # Print the APP_DIR
+            echo "Building Docker image in directory: $APP_DIR"
 
             # Build the Docker image
             docker build -t $DOCKER_IMAGE -f $DOCKER_FILE .
