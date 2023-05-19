@@ -53,7 +53,7 @@ jobs:
             echo "Building Docker image in directory: $APP_DIR"
 
             # Build the Docker image
-            docker build -t $DOCKER_IMAGE -f $DOCKER_FILE $APP_DIR
+            docker build -t $DOCKER_IMAGE -f $DOCKER_FILE -C $APP_DIR ..
 
             # Save the Docker image to the 'docker' directory
             docker save -o $DOCKER_IMAGE.tar $DOCKER_IMAGE
