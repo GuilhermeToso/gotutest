@@ -37,9 +37,9 @@ jobs:
         run: |
           npm ci
           npx nx affected:test --base=origin/main~1 --head=origin/main
-          npx nx build gotu-backend
+          npx nx affected:build --base=origin/main~1 --head=origin/main
 
       - name: Build Docker Image
         run: |
-          docker build -t my-app -f apps/gotu-backend/Dockerfile .
+          docker build -t gotu-backend -f apps/gotu-backend/Dockerfile .
 

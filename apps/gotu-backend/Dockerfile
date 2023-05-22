@@ -7,7 +7,7 @@ WORKDIR /app
 COPY dist/apps/gotu-backend .
 COPY package*.json ./
 
-ENV PORT=3333
+ENV PORT=3000
 EXPOSE ${PORT}
 
 # Install dependencies
