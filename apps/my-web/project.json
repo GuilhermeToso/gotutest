@@ -63,6 +63,10 @@
       "options": {
         "lintFilePatterns": ["apps/my-web/**/*.{ts,tsx,js,jsx}"]
       }
+    },
+    "docker-build": {
+      "dependsOn": ["build"],
+      "command": "docker build -f apps/my-web/Dockerfile . -t my-web"
     }
   },
   "tags": []
